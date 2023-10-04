@@ -29,8 +29,8 @@ class RegistrationPage:
             '//*[@id="index"]/div/div[2]/div[4]/div/div/div[9]/label/div[2]/input': 'vosh_login',
             '//*[@id="index"]/div/div[2]/div[4]/div/div/div[10]/label/div[2]/input': 'tel',
             '//*[@id="index"]/div/div[2]/div[4]/div/div/div[11]/label/div[2]/input': 'snils',
-            '//*[@id="index"]/div/div[2]/div[4]/div/div/div[12]/ul/li[1]/span[1]': None,
-            '//*[@id="index"]/div/div[2]/div[4]/div/div/div[12]/ul/li[2]/span[1]': None,
+            '//*[@id="index"]/div/div[2]/div[4]/div/div/div[12]/ul/li[1]/span[2]': None,
+            '//*[@id="index"]/div/div[2]/div[4]/div/div/div[12]/ul/li[2]/span[2]': None,
             '//*[@id="index"]/div/div[2]/div[4]/div/div/div[13]/div/label/input': None,
             '//*[@id="index"]/div/div[2]/div[4]/div/div/div[14]/div/label/input': None,
             '//*[@id="index"]/div/div[2]/div[4]/div/div/div[15]/div/label/input': None,
@@ -116,8 +116,8 @@ class RegistrationPage:
         Выбирает дополнительную олимпиаду на странице регистрации.
         :return: None
         """
-        additional_olympiad_xpath = '//*[@id="index"]/div/div[2]/div[4]/div/div/div[12]/ul/li[2]/span[1]'
-        main_olympiad_xpath = '//*[@id="index"]/div/div[2]/div[4]/div/div/div[12]/ul/li[2]/span[1]'
+        additional_olympiad_xpath = '//*[@id="index"]/div/div[2]/div[4]/div/div/div[12]/ul/li[1]/span[2]'
+        main_olympiad_xpath = '//*[@id="index"]/div/div[2]/div[4]/div/div/div[12]/ul/li[2]/span[2]'
         main_element = self.driver.find_element(By.XPATH, additional_olympiad_xpath)
         add_element = self.driver.find_element(By.XPATH, main_olympiad_xpath)
         add_element.click() if add_element.is_displayed() else main_element.click()
@@ -146,6 +146,13 @@ def test_empty_fields_validation(browser):
     page.empty_fields_validation()
 
 
+# Тест-кейс для проверки выбора дополнительной олимпиады
+def test_select_additional_olympiad(browser):
+    page = RegistrationPage(browser)
+    page.navigate_to_registration_page()
+    page.select_additional_olympiad()
+
+
 # Тест-кейс для проверки заполнения формы регистрации
 def test_fill_registration_form(browser):
     page = RegistrationPage(browser)
@@ -160,8 +167,3 @@ def test_is_registration_successful(browser):
     assert page.is_registration_page_loaded()
 
 
-# Тест-кейс для проверки выбора дополнительной олимпиады
-def test_select_additional_olympiad(browser):
-    page = RegistrationPage(browser)
-    page.navigate_to_registration_page()
-    page.select_additional_olympiad()
