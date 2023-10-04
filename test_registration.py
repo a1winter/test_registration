@@ -49,10 +49,8 @@ class RegistrationPage:
         :return: None.
         """
         try:
-            first_name_input = self.driver.find_element(By.XPATH,
-                                    '//*[@id="index"]/div/div[2]/div[4]/div/div/div[2]/label/div[2]/input')
-            last_name_input = self.driver.find_element(By.XPATH,
-                                    '//*[@id="index"]/div/div[2]/div[4]/div/div/div[3]/label/div[2]/input')
+            first_name_input = self.driver.find_element(By.XPATH, next(iter(self.xpath_list)))
+            last_name_input = self.driver.find_element(By.XPATH, next(iter(self.xpath_list)))
 
             return first_name_input.is_displayed() and last_name_input.is_displayed()
         except NoSuchElementException:
