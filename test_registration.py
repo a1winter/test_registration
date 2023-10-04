@@ -76,6 +76,7 @@ class RegistrationPage:
         :param data: Словарь с данными для заполнения формы.
         :return: None.
         """
+        sleep(1)
         for index, (xpath, data_key) in enumerate(self.xpath_list.items()):
             new_key = '//*[@id="index"]/div/div[2]/div[4]/div/div/div[5]/label/div[2]/div[1]'
             new_elem = "/div/div/input"
@@ -96,8 +97,6 @@ class RegistrationPage:
 
         self.driver.find_element(By.XPATH, '//*[@id="index"]/div/div[2]/div[4]/button/span').click()
 
-        # После отправки формы ждём сообщения об успешной регистрации
-        self.is_registration_successful()
 
     def is_registration_successful(self):
         """
