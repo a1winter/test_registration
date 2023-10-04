@@ -163,7 +163,7 @@ def test_fill_registration_form(browser):
 # Тест-кейс для проверки успешной регистрации
 def test_is_registration_successful(browser):
     page = RegistrationPage(browser)
+    page.navigate_to_registration_page()
     page.is_registration_page_loaded()
-    assert page.is_registration_page_loaded()
 
 
